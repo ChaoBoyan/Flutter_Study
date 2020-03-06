@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutterstudy/AppBar_demo.dart';
+import 'package:flutterstudy/BefaultTabController.dart';
+
 class listViewDemo extends StatelessWidget {
 
   final List<String> cellDate = [
-    "AppBaeDemo","2","1","2","1","2","1","2","1","2","1","2","1","2","1","2"
+    "AppBaeDemo","DefaultTabController","1","2","1","2","1","2","1","2","1","2","1","2","1","2"
   ];
 
   @override
@@ -15,20 +17,29 @@ class listViewDemo extends StatelessWidget {
 
       itemCount: cellDate.length,
       itemBuilder: (context, index){
+
        return ListTile(
          title: Text("${cellDate[index]}"),
          subtitle: Text("$index"),
          trailing: Icon(Icons.navigate_next),
 
          onTap:(){
-           gotoAppBarDemoWidget(context);
+           gotoAppBarDemoWidget(context,index);
          },
        );
       },
     );
   }
 
-  void  gotoAppBarDemoWidget(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>NavigationBarView_demo()));
+  void  gotoAppBarDemoWidget(BuildContext context,int index){
+    switch (index){
+      case 0:
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>NavigationBarView_demo()));
+        break;
+      case 1:
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>TabControllerDemo()));
+        break;
+    }
+
   }
 }
