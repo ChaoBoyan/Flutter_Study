@@ -17,7 +17,7 @@ class TabControllerDemo extends StatelessWidget {
               labelStyle: TextStyle(fontSize: 16.0),
               indicatorColor: Colors.white,
               indicatorSize: TabBarIndicatorSize.label,
-              
+
               isScrollable: true,
               tabs: [
                 Tab(
