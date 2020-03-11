@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutterstudy/ListView_demo.dart';
+import 'package:flutterstudy/Navigator_demo.dart';
 import 'package:flutterstudy/tabbar_demo.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -8,12 +10,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: "/",
+      routes: {
+        "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'),
+        "/newpage": (context) => NewPage(title: "NewPage_Routes"),
+      },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+//      home: MyHomePage(title: 'Flutter Demo Home Page'),
+//        home 可以用 initialRoute 替代 ,
 
     );
   }
@@ -39,15 +47,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
-
         title: Text(widget.title),
       ),
       bottomNavigationBar: BottomTabbarView(),
-      body: 
-      Center(
+      body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: listViewDemo(),

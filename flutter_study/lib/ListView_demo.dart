@@ -3,6 +3,7 @@ import 'package:flutterstudy/AppBar_demo.dart';
 import 'package:flutterstudy/BefaultTabController.dart';
 import 'package:flutterstudy/Container_demo.dart';
 import 'package:flutterstudy/GridView_demo.dart';
+import 'package:flutterstudy/Navigator_demo.dart';
 import 'package:flutterstudy/PageViewBuild_demo.dart';
 import 'Sliver_demo.dart';
 import 'PageView_demo.dart';
@@ -10,7 +11,7 @@ import 'PageView_demo.dart';
 class listViewDemo extends StatelessWidget {
 
   final List<String> cellDate = [
-    "AppBaeDemo","DefaultTabController","ContainerDemo","PageViewDemo","PageVieBuildwDemo","GridViewDemo","SliverViewDemo","2","1","2","1","2","1","2","1","2"
+    "AppBaeDemo","DefaultTabController","ContainerDemo","PageViewDemo","PageVieBuildwDemo","GridViewDemo","SliverViewDemo","NavigatorDemo","1","2","1","2","1","2","1","2"
   ];
 
   @override
@@ -58,6 +59,9 @@ class listViewDemo extends StatelessWidget {
         break;
       case 6:
         Navigator.push(context, MaterialPageRoute(builder: (context)=>SliverViewDemo()));
+        break;
+      case 7:
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>NavigatorDemo()));
         break;
     }
 
