@@ -11,7 +11,7 @@ import 'PageView_demo.dart';
 class listViewDemo extends StatelessWidget {
 
   final List<String> cellDate = [
-    "AppBaeDemo","DefaultTabController","ContainerDemo","PageViewDemo","PageVieBuildwDemo","GridViewDemo","SliverViewDemo","NavigatorDemo","1","2","1","2","1","2","1","2"
+    "AppBaeDemo","DefaultTabController","ContainerDemo","PageViewDemo","PageVieBuildwDemo","GridViewDemo","SliverViewDemo","NavigatorDemo","FormDemo","2","1","2","1","2","1","2"
   ];
 
   @override
@@ -62,6 +62,9 @@ class listViewDemo extends StatelessWidget {
         break;
       case 7:
         Navigator.push(context, MaterialPageRoute(builder: (context)=>NavigatorDemo()));
+        break;
+      case 8:
+        Navigator.pushNamed(context, "/formdemo");
         break;
     }
 

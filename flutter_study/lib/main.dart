@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterstudy/Form_demo.dart';
 import 'package:flutterstudy/ListView_demo.dart';
 import 'package:flutterstudy/Navigator_demo.dart';
 import 'package:flutterstudy/tabbar_demo.dart';
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'),
         "/newpage": (context) => NewPage(title: "NewPage_Routes"),
+        "/formdemo":(context)=> FormDemo(title: "FormDemo",),
       },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
