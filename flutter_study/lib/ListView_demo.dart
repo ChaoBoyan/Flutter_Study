@@ -7,11 +7,12 @@ import 'package:flutterstudy/Navigator_demo.dart';
 import 'package:flutterstudy/PageViewBuild_demo.dart';
 import 'Sliver_demo.dart';
 import 'PageView_demo.dart';
+import 'Components.dart';
 
 class listViewDemo extends StatelessWidget {
 
   final List<String> cellDate = [
-    "AppBaeDemo","DefaultTabController","ContainerDemo","PageViewDemo","PageVieBuildwDemo","GridViewDemo","SliverViewDemo","NavigatorDemo","FormDemo","2","1","2","1","2","1","2"
+    "AppBaeDemo","DefaultTabController","ContainerDemo","PageViewDemo","PageVieBuildwDemo","GridViewDemo","SliverViewDemo","NavigatorDemo","FormDemo","ComponentsButton","1","2","1","2","1","2"
   ];
 
   @override
@@ -65,6 +66,9 @@ class listViewDemo extends StatelessWidget {
         break;
       case 8:
         Navigator.pushNamed(context, "/formdemo");
+        break;
+      case 9:
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>ComponentsButton()));
         break;
     }
 

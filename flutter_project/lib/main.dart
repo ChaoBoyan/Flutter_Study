@@ -1,111 +1,105 @@
 import 'package:flutter/material.dart';
-
 void main() => runApp(MyApp());
-
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    // TODO: implement build
+    return new MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "flutter demo",
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+          primarySwatch: Colors.lightBlue //primarySwatch ：现在支持18种主题样本。
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: _home(),
     );
   }
 }
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
+class _home extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _homeState();
   }
-
+}
+class _homeState extends State<_home> {
+//  List<Widget> _viewList; //创建视图数组
+//  int _index = 0; //数组索引，通过改变索引值改变视图
+//  @override
+//  void initState() {
+//    super.initState();
+//    _viewList = List();
+//    _viewList..add(EachView("HOME"))..add(EachView("CLOCK"));
+//  }
+//  _openNewPage() {
+//    Navigator.of(context)
+//        .push(MaterialPageRoute(builder: (BuildContext context) {
+//      return EachView("new Pager");
+//    }));
+//  }
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+    // TODO: implement build
+    return new Scaffold(
+      floatingActionButton: FloatingActionButton(
+//          onPressed: _openNewPage,
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+          )),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      //和底栏进行融合
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.lightBlue, //底部工具栏的颜色。
+        shape: CircularNotchedRectangle(),
+        //设置底栏的形状，一般使用这个都是为了和floatingActionButton融合，
+        // 所以使用的值都是CircularNotchedRectangle(),有缺口的圆形矩形。
+        child: Row(
+          //里边可以放置大部分Widget，让我们随心所欲的设计底栏
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            IconButton(
+              icon: Icon(
+                Icons.home,
+                color: Colors.white,
+              ),
+              color: Colors.white,
+//              onPressed: () {
+//                setState(() {
+//                  _index = 0;
+//                });
+//              },
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+            IconButton(
+              icon: Icon(Icons.access_alarms, color: Colors.white),
+              color: Colors.white,
+//              onPressed: () {
+//                setState(() {
+//                  _index = 1;
+//                });
+//              },
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+//      body: _viewList[_index],
     );
   }
 }
+//子页面
+//代码中设置了一个内部的_title变量，这个变量是从主页面传递过来的，然后根据传递过来的具体值显示在APP的标题栏和屏幕中间。
+//class EachView extends StatefulWidget {
+//  String _title;
+//  EachView(this._title);
+//  @override
+//  _EachViewState createState() => _EachViewState();
+//}
+//class _EachViewState extends State<EachView> {
+//  @override
+//  Widget build(BuildContext context) {
+//    return Scaffold(
+//      appBar: AppBar(title: Text(widget._title)),
+//      body: Center(child: Text(widget._title)),
+//    );
+//  }
+//}
