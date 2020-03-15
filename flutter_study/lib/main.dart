@@ -3,6 +3,7 @@ import 'package:flutterstudy/Form_demo.dart';
 import 'package:flutterstudy/ListView_demo.dart';
 import 'package:flutterstudy/Navigator_demo.dart';
 import 'package:flutterstudy/tabbar_demo.dart';
+import 'package:flutterstudy/Components.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
         "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'),
         "/newpage": (context) => NewPage(title: "NewPage_Routes"),
         "/formdemo":(context)=> FormDemo(title: "FormDemo",),
+//        "/componentsButton":(context)=> ComponentsButton(),
       },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -59,7 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
         // in the middle of the parent.
         child: listViewDemo(),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        elevation: 0.0,
         onPressed: _incrementCounter,
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.

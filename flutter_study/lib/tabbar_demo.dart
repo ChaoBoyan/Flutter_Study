@@ -25,6 +25,7 @@ class tabbarView extends State<BottomTabbarView> {
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.home),title: Text("首页",)),
         BottomNavigationBarItem(icon: Icon(Icons.query_builder),title: Text("历史")),
+        BottomNavigationBarItem(icon: Icon(Icons.query_builder,color: Colors.transparent,),title: Text("发布")),
         BottomNavigationBarItem(icon: Icon(Icons.add_shopping_cart),title: Text("购物车")),
         BottomNavigationBarItem(icon: Icon(Icons.desktop_mac),title: Text("我的")),
       ],
