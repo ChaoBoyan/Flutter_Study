@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ComponentsButton extends StatelessWidget {
   @override
@@ -13,7 +14,124 @@ class ComponentsButton extends StatelessWidget {
           ListItemDemo(
               title: "FloatingActionButton",
               pageWidget: FloatingActionButtonDemo()),
+          ListItemDemo(
+              title: "FlatButton", pageWidget: FloatingActionButtonDemo()),
+          ListItemDemo(
+              title: "RaisedButton", pageWidget: FloatingActionButtonDemo()),
+          ListItemDemo(
+              title: "OutlineButton", pageWidget: FloatingActionButtonDemo()),
+          ListItemDemo(title: "PopMenuButton", pageWidget: PopMenuButtonDemo()),
+          ListItemDemo(title: "DateTimeDemo", pageWidget: DateTimeDemo()),
+
+//          Container + button 指定宽度
+//Expanded + button 自动充满 权重flex占比份
+//        buttonbar + button
         ],
+      ),
+    );
+  }
+}
+
+class DateTimeDemo extends StatefulWidget {
+  @override
+  _DateTimeDemoState createState() => _DateTimeDemoState();
+}
+
+class _DateTimeDemoState extends State<DateTimeDemo> {
+   DateTime selectDate = DateTime.now();
+
+  Future _selectDate() async {
+   final DateTime date = await showDatePicker(
+        context: context,
+        initialDate: selectDate,
+        firstDate: DateTime(1900),
+        lastDate: DateTime(2100),
+    );
+
+   if (date == null) return;
+
+   setState(() {
+     selectDate = date;
+   });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("DateTimeDemo"),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                InkWell(
+                  onTap: _selectDate,
+                  child: Row(
+                    children: <Widget>[
+                      Text(DateFormat.yMd().format(selectDate)),
+                      Icon(Icons.arrow_drop_down),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class PopMenuButtonDemo extends StatefulWidget {
+  @override
+  _PopMenuButtonState createState() => _PopMenuButtonState();
+}
+
+class _PopMenuButtonState extends State<PopMenuButtonDemo> {
+  String _currentValue = "--";
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("PopMenuButton")),
+      body: Container(
+        color: Colors.grey,
+        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.all(6),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(_currentValue),
+            PopupMenuButton(
+              itemBuilder: (BuildContext context) {
+                return [
+                  PopupMenuItem(
+                    child: Text("Home"),
+                    value: "home",
+                  ),
+                  PopupMenuItem(
+                    child: Text("Mine"),
+                    value: "Mine",
+                  ),
+                  PopupMenuItem(
+                    child: Text("Shop"),
+                    value: "Shop",
+                  ),
+                ];
+              },
+              onSelected: (value) {
+                print(value);
+                setState(() {
+                  _currentValue = value;
+                });
+              },
+            )
+          ],
+        ),
       ),
     );
   }
@@ -29,6 +147,7 @@ class FloatingActionButtonDemo extends StatelessWidget {
 //      shape: BeveledRectangleBorder(
 //        borderRadius: BorderRadius.circular(30),
 //      ),
+//    shape: StadiumBorder(),
     );
 
     final Widget _floatingActionButtonExpand = FloatingActionButton.extended(
@@ -73,6 +192,48 @@ class FloatingActionButtonDemo extends StatelessWidget {
                   onPressed: () {}),
             ],
           ),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            FlatButton(
+              onPressed: () {},
+              child: Text("button"),
+//          shape: StadiumBorder(),
+//            BeveledRectangleBorder 顶端斜角
+//            BoxBorder
+//            CircleBorder 圆形
+//            InputBorder
+//            RoundedRectangleBorder 顶端圆角
+//            StadiumBorder 体育场型
+              shape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.horizontal(left: Radius.elliptical(30, 30)),
+                side: BorderSide(
+                  color: Colors.blueAccent,
+                  width: 2,
+                  style: BorderStyle.solid,
+                ),
+              ),
+            ),
+            RaisedButton(
+              onPressed: () {},
+              child: Text("RaisedButton"),
+            ),
+            RaisedButton.icon(
+              icon: Icon(Icons.gavel),
+              onPressed: () {},
+              label: Text("RaisedButtonIcon"),
+            ),
+            OutlineButton(
+              onPressed: () {},
+              splashColor: Colors.grey[200],
+              highlightedBorderColor: Colors.grey,
+              child: Text("OutlineButton"),
+            ),
+          ],
         ),
       ),
     );
