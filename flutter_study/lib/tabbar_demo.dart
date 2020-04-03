@@ -3,22 +3,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class BottomTabbarView extends StatefulWidget{
+  int  index;
+  BottomTabbarView({Key key ,@required this.index}):super(key:key);
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return tabbarView();
+//    return tabbarView(currentIndex: currentIndex);
+  return tabbarView();
   }
+
 }
 
 
 class tabbarView extends State<BottomTabbarView> {
-  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return BottomNavigationBar(
       onTap: selectIndexAction,
-      currentIndex: _currentIndex,
+      currentIndex: widget.index,
       selectedFontSize: 11,
       unselectedFontSize: 10,
       type: BottomNavigationBarType.fixed,
@@ -34,7 +39,8 @@ class tabbarView extends State<BottomTabbarView> {
 
   void  selectIndexAction(int index){
     setState(() {
-      _currentIndex = index;
+      widget.index = index;
+      print(index);
     });
   }
 }

@@ -22,6 +22,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        highlightColor: Colors.transparent,
+        splashColor: Colors.transparent,
         primarySwatch: Colors.green,
       ),
 //      home: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -41,11 +43,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int _counter = 2;
 
   void _incrementCounter() {
     setState(() {
-      _counter++;
+      _counter = 2;
+
     });
   }
 
@@ -55,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      bottomNavigationBar: BottomTabbarView(),
+      bottomNavigationBar: BottomTabbarView(index: _counter),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
