@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutterstudy/Form_demo.dart';
 import 'package:flutterstudy/ListView_demo.dart';
 import 'package:flutterstudy/Navigator_demo.dart';
+import 'package:flutterstudy/crossPassData.dart';
 import 'package:flutterstudy/tabbar_demo.dart';
 import 'package:flutterstudy/Components.dart';
 
+//mac 代码格式排版 快捷键组合  option + command + L
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -12,11 +14,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: "/",
+      initialRoute: "/passData",
       routes: {
-        "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'),
+        "/": (context) => MyHomePage(title: 'Flutter Demo'),
         "/newpage": (context) => NewPage(title: "NewPage_Routes"),
-        "/formdemo":(context)=> FormDemo(title: "FormDemo",),
+        "/formdemo": (context) => FormDemo(
+              title: "FormDemo",
+            ),
+        "/passData":(context)=>CrossPassData(),
 //        "/componentsButton":(context)=> ComponentsButton(),
       },
       debugShowCheckedModeBanner: false,
@@ -28,7 +33,6 @@ class MyApp extends StatelessWidget {
       ),
 //      home: MyHomePage(title: 'Flutter Demo Home Page'),
 //        home 可以用 initialRoute 替代 ,
-
     );
   }
 }
@@ -48,7 +52,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
     setState(() {
       _counter = 2;
-
     });
   }
 

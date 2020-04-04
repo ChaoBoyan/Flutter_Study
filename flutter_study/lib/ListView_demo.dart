@@ -5,6 +5,7 @@ import 'package:flutterstudy/Container_demo.dart';
 import 'package:flutterstudy/GridView_demo.dart';
 import 'package:flutterstudy/Navigator_demo.dart';
 import 'package:flutterstudy/PageViewBuild_demo.dart';
+import 'package:flutterstudy/crossPassData.dart';
 import 'Sliver_demo.dart';
 import 'PageView_demo.dart';
 import 'Components.dart';
@@ -12,7 +13,7 @@ import 'Components.dart';
 class listViewDemo extends StatelessWidget {
 
   final List<String> cellDate = [
-    "AppBaeDemo","DefaultTabController","ContainerDemo","PageViewDemo","PageVieBuildwDemo","GridViewDemo","SliverViewDemo","NavigatorDemo","FormDemo","ComponentsButton","1","2","1","2","1","2"
+    "AppBaeDemo","DefaultTabController","ContainerDemo","PageViewDemo","PageVieBuildwDemo","GridViewDemo","SliverViewDemo","NavigatorDemo","FormDemo","ComponentsButton","CrossPassData"
   ];
 
   @override
@@ -69,6 +70,9 @@ class listViewDemo extends StatelessWidget {
         break;
       case 9:
         Navigator.push(context, MaterialPageRoute(builder: (context)=>ComponentsButton()));
+        break;
+      case 10:
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>CrossPassData()));
         break;
     }
 
